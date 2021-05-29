@@ -11,6 +11,7 @@
 		1286EA08265A03830035CA51 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1286EA07265A03830035CA51 /* Item.swift */; };
 		1286EA0A265A04B50035CA51 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1286EA09265A04B50035CA51 /* Category.swift */; };
 		1286EA0C265CDA280035CA51 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1286EA0B265CDA280035CA51 /* SwipeTableViewController.swift */; };
+		1286EA0E265F3C020035CA51 /* SetNewCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1286EA0D265F3C020035CA51 /* SetNewCategoryController.swift */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -24,6 +25,8 @@
 		1286EA07265A03830035CA51 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1286EA09265A04B50035CA51 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		1286EA0B265CDA280035CA51 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
+		1286EA0D265F3C020035CA51 /* SetNewCategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNewCategoryController.swift; sourceTree = "<group>"; };
+		1286EA14265F42850035CA51 /* YanoneKaffeesatz-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YanoneKaffeesatz-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		398284E441F1C4CD2FDD6ED4 /* Pods-Todoey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.debug.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.debug.xcconfig"; sourceTree = "<group>"; };
 		6E23C26761A8EC9998C6DFDF /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
 		B1718C5B9F21D81CE4B50A46 /* Pods_Todoey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1286EA0F265F41C20035CA51 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				1286EA14265F42850035CA51 /* YanoneKaffeesatz-VariableFont_wght.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		12B8F42326538151005B0D4B /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +74,7 @@
 				1286EA03265754F80035CA51 /* CategoryViewController.swift */,
 				EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */,
 				1286EA0B265CDA280035CA51 /* SwipeTableViewController.swift */,
+				1286EA0D265F3C020035CA51 /* SetNewCategoryController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -78,6 +90,7 @@
 		12B8F4262653822A005B0D4B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1286EA0F265F41C20035CA51 /* fonts */,
 				EB2BE502239524DC00FB933B /* Assets.xcassets */,
 				EB2BE504239524DC00FB933B /* LaunchScreen.storyboard */,
 			);
@@ -150,6 +163,8 @@
 			dependencies = (
 			);
 			name = Todoey;
+			packageProductDependencies = (
+			);
 			productName = Todoey;
 			productReference = EB2BE4F6239524DB00FB933B /* Todoey.app */;
 			productType = "com.apple.product-type.application";
@@ -178,6 +193,8 @@
 				Base,
 			);
 			mainGroup = EB2BE4ED239524DB00FB933B;
+			packageReferences = (
+			);
 			productRefGroup = EB2BE4F7239524DB00FB933B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -253,6 +270,7 @@
 				EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */,
 				1286EA0C265CDA280035CA51 /* SwipeTableViewController.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
+				1286EA0E265F3C020035CA51 /* SetNewCategoryController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 import ChameleonFramework
 
-class TodoListViewController: SwipeTableViewController {
+class TodoListViewController: SwipeTableViewController{
     @IBOutlet weak var searchBar: UISearchBar!
     
     var todoItems: Results<Item>?
@@ -25,9 +25,8 @@ class TodoListViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchBar.delegate = self
         tableView.separatorStyle = .none
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -139,7 +138,7 @@ class TodoListViewController: SwipeTableViewController {
                     try self.realm.write {
                         let newItem = Item()
                         newItem.title = textField.text!
-                        newItem.dataCreated = Date()
+                        newItem.dateCreated = Date()
                         currentCategory.items.append(newItem)
                     }
                 }catch{
@@ -171,7 +170,7 @@ class TodoListViewController: SwipeTableViewController {
     func loadItems(){
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
-        
+        tableView.reloadData()
     }
     
     override func updateModel(at indexPath: IndexPath) {
@@ -190,9 +189,14 @@ class TodoListViewController: SwipeTableViewController {
 }
 
 extension TodoListViewController: UISearchBarDelegate {
+    
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
-        tableView.reloadData()
+        if searchBar.text?.count != 0 {
+            todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+            searchBar.resignFirstResponder()
+            tableView.reloadData()
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -202,8 +206,20 @@ extension TodoListViewController: UISearchBarDelegate {
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
-            //            tableView.reloadData()
+        }else{
+            todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+            tableView.reloadData()
         }
     }
+    
+    
+//MARK: - Fail to use touchesBegan
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        searchBar.endEditing(true)
+//    }
+//
+//    func searchBarTextDidBeginEditing(sender: UISearchBar) {
+//        self.tableView.isUserInteractionEnabled=false
+//    }
     
 }

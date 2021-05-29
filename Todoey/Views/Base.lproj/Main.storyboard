@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +54,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUm-58-eJi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642.0289855072465" y="48.883928571428569"/>
+            <point key="canvasLocation" x="1865" y="465"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eMQ-uH-sEM">
@@ -101,6 +102,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="e7e-wQ-Yh7">
                             <connections>
                                 <action selector="addButtonPressed:" destination="q1h-oo-l3s" id="QSx-mH-FoS"/>
+                                <segue destination="Nzb-SK-PA7" kind="show" identifier="setNewCategory" id="GPK-0T-iOL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -112,11 +114,149 @@
             </objects>
             <point key="canvasLocation" x="830" y="49"/>
         </scene>
+        <!--Set New Category Controller-->
+        <scene sceneID="UBS-6d-I9e">
+            <objects>
+                <viewController id="Nzb-SK-PA7" customClass="SetNewCategoryController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f8s-GL-Emw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="98" translatesAutoresizingMaskIntoConstraints="NO" id="xfS-4K-mGb">
+                                <rect key="frame" x="20" y="202.5" width="374" height="633.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="pvM-Tt-JWp">
+                                        <rect key="frame" x="40" y="0.0" width="294" height="38.5"/>
+                                        <color key="backgroundColor" red="0.55095484669999994" green="0.85462306700000001" blue="0.82576164060000001" alpha="0.73146571130000004" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hCl-bN-zsM">
+                                        <rect key="frame" x="0.0" y="136.5" width="374" height="348"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fDj-3S-Hsb">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="90"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UqY-F7-nEV">
+                                                        <rect key="frame" x="154.5" y="0.0" width="65.5" height="52"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="125" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="2Kn-Xt-vFR">
+                                                        <rect key="frame" x="-2" y="60" width="378" height="31"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
+                                                        <color key="thumbTintColor" systemColor="systemRedColor"/>
+                                                        <connections>
+                                                            <action selector="sliderSetColor:" destination="Nzb-SK-PA7" eventType="valueChanged" id="7ub-9r-MHv"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="2Kn-Xt-vFR" firstAttribute="leading" secondItem="fDj-3S-Hsb" secondAttribute="leading" id="rrq-U7-oiU"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="X5n-yH-GGe">
+                                                <rect key="frame" x="0.0" y="130" width="374" height="90"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GD-Tu-a4d">
+                                                        <rect key="frame" x="137" y="0.0" width="100" height="52"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="125" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="f7I-Kp-1GS">
+                                                        <rect key="frame" x="-2" y="60" width="378" height="31"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
+                                                        <color key="thumbTintColor" systemColor="systemGreenColor"/>
+                                                        <connections>
+                                                            <action selector="sliderSetColor:" destination="Nzb-SK-PA7" eventType="valueChanged" id="jWG-xK-OUd"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="f7I-Kp-1GS" firstAttribute="leading" secondItem="X5n-yH-GGe" secondAttribute="leading" id="Kv4-Z5-31b"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="gPR-fB-yc3">
+                                                <rect key="frame" x="0.0" y="260" width="374" height="88"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRG-3T-9Py">
+                                                        <rect key="frame" x="150.5" y="0.0" width="73.5" height="52"/>
+                                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="40"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="125" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="hpm-lK-hsy">
+                                                        <rect key="frame" x="-2" y="58" width="378" height="31"/>
+                                                        <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
+                                                        <color key="thumbTintColor" systemColor="systemBlueColor"/>
+                                                        <connections>
+                                                            <action selector="sliderSetColor:" destination="Nzb-SK-PA7" eventType="valueChanged" id="0KL-tJ-D69"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="hpm-lK-hsy" firstAttribute="leading" secondItem="gPR-fB-yc3" secondAttribute="leading" id="eac-Sl-Ss1"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5E-av-nLJ">
+                                        <rect key="frame" x="133" y="582.5" width="108" height="51"/>
+                                        <color key="backgroundColor" red="0.97497013060000004" green="0.63956500653365977" blue="0.38860531904955126" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="30"/>
+                                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Confirm">
+                                            <color key="titleColor" red="0.086274504660000001" green="0.2117646933" blue="0.22745099660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="ConfirmButton:" destination="Nzb-SK-PA7" eventType="touchUpInside" id="kVj-e3-z8z"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hCl-bN-zsM" firstAttribute="leading" secondItem="xfS-4K-mGb" secondAttribute="leading" id="p1E-RD-ckm"/>
+                                    <constraint firstItem="pvM-Tt-JWp" firstAttribute="leading" secondItem="xfS-4K-mGb" secondAttribute="leading" constant="40" id="pD3-q4-2HC"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vbT-bH-6kY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xfS-4K-mGb" secondAttribute="bottom" constant="60" id="T4a-dq-TcW"/>
+                            <constraint firstItem="xfS-4K-mGb" firstAttribute="leading" secondItem="f8s-GL-Emw" secondAttribute="leadingMargin" id="tzM-Yt-GOl"/>
+                            <constraint firstItem="xfS-4K-mGb" firstAttribute="trailing" secondItem="f8s-GL-Emw" secondAttribute="trailingMargin" id="wzQ-tX-xZL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pMn-bQ-lcN"/>
+                    <connections>
+                        <outlet property="BlueLabel" destination="yRG-3T-9Py" id="GDi-Zk-VkL"/>
+                        <outlet property="CategoryNameInput" destination="pvM-Tt-JWp" id="Bhx-xF-hPi"/>
+                        <outlet property="ColorBlueSlider" destination="hpm-lK-hsy" id="dIt-Zr-gS8"/>
+                        <outlet property="ColorGreenSlider" destination="f7I-Kp-1GS" id="fpP-Es-8UJ"/>
+                        <outlet property="ColorRedSlider" destination="2Kn-Xt-vFR" id="zsy-gl-KVJ"/>
+                        <outlet property="GreenLabel" destination="6GD-Tu-a4d" id="0na-xt-uB3"/>
+                        <outlet property="RedLabel" destination="UqY-F7-nEV" id="HUF-pA-epm"/>
+                        <segue destination="cOQ-SP-erO" kind="unwind" identifier="backToCategoryView" unwindAction="unwindSegueBackWithSegue:" id="Tue-oz-Pja"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVx-f8-tww" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="cOQ-SP-erO" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1881.1594202898552" y="-216.29464285714286"/>
+        </scene>
     </scenes>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

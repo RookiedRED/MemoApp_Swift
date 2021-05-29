@@ -18,39 +18,43 @@ class CategoryViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadCategories()
         
         tableView.separatorStyle = .none
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)        
-            /*
-             Set the colour to use here:
-             */
-            let theColourWeAreUsing = UIColor(hexString: "778ca3")!
+    @IBAction func unwindSegueBack (segue: UIStoryboardSegue){
         
-            /*
-             THen we will set the colours. Using navigationController?.navigationBar.backgroundColor is not an option here because in iOS 13, the status bar at the very top does not change colour (strangely enough). After Googling this, I found a solution where they use UINavigationBarAppearance() instead.
-             */
-            let navBarAppearance = UINavigationBarAppearance()
-            let navBar = navigationController?.navigationBar
-            navBarAppearance.configureWithOpaqueBackground()
-            
-            /*
-             We use Chameleon's ContrastColorOf() function to set the colour of the text based on the colour we use. If it is dark, the text is light, and vice versa.
-             */
-            let contrastColour = ContrastColorOf(theColourWeAreUsing, returnFlat: true)
-            
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: contrastColour]
-            navBarAppearance.backgroundColor = theColourWeAreUsing
-            navBar?.tintColor = contrastColour
-            navBar?.standardAppearance = navBarAppearance
-            navBar?.scrollEdgeAppearance = navBarAppearance
-            
-            self.navigationController?.navigationBar.setNeedsLayout()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
+        /*
+         Set the colour to use here:
+         */
+        let theColourWeAreUsing = UIColor(hexString: "fed330")!
+        
+        /*
+         THen we will set the colours. Using navigationController?.navigationBar.backgroundColor is not an option here because in iOS 13, the status bar at the very top does not change colour (strangely enough). After Googling this, I found a solution where they use UINavigationBarAppearance() instead.
+         */
+        let navBarAppearance = UINavigationBarAppearance()
+        let navBar = navigationController?.navigationBar
+        navBarAppearance.configureWithOpaqueBackground()
+        
+        /*
+         We use Chameleon's ContrastColorOf() function to set the colour of the text based on the colour we use. If it is dark, the text is light, and vice versa.
+         */
+        let contrastColour = ContrastColorOf(theColourWeAreUsing, returnFlat: true)
+        
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: contrastColour]
+        navBarAppearance.backgroundColor = theColourWeAreUsing
+        navBar?.tintColor = contrastColour
+        navBar?.standardAppearance = navBarAppearance
+        navBar?.scrollEdgeAppearance = navBarAppearance
+        
+        self.navigationController?.navigationBar.setNeedsLayout()
         
     }
     //MARK: - TableView Datasource Methods
@@ -69,7 +73,7 @@ class CategoryViewController: SwipeTableViewController {
             cell.backgroundColor = categoryColor
             cell.textLabel?.textColor = ContrastColorOf(categoryColor, returnFlat: true)
         }
-
+        
         return cell
     }
     
@@ -82,47 +86,17 @@ class CategoryViewController: SwipeTableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! TodoListViewController
-        if let indexPath = tableView.indexPathForSelectedRow{
-            destinationVC.selectedCategory = categories?[indexPath.row]
+        if segue.identifier == "goToItems"{
+            let destinationVC = segue.destination as! TodoListViewController
+            if let indexPath = tableView.indexPathForSelectedRow{
+                destinationVC.selectedCategory = categories?[indexPath.row]
+            }
         }
+        
     }
     
     
     
-    //MARK: - Add new Categories
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
-        var textField = UITextField()
-        
-        let alert = UIAlertController(title: "Add New category", message: "", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            
-            let newCategory = Category()
-            newCategory.backgroundColor = UIColor.randomFlat().hexValue()
-            newCategory.name = textField.text!
-            
-            self.save(category: newCategory)
-            
-        }
-        alert.addTextField { (field) in
-            field.placeholder = "Add a new category"
-            textField = field
-            
-        }
-        
-        alert.addAction(action)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.addAction(cancelAction)
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    
-
     //MARK: - Data Manipulation Methods
     
     func save(category: Category){
